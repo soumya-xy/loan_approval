@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, shrink-to-fit=no">
     <title>Loan Prediction Result | AI Financial Assessment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         /* Optimized animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -38,57 +44,57 @@
         }
         .card-hover {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            will-change: transform;
         }
         .card-hover:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.1);
         }
-    </style>
-    <script>
-        // Load Tailwind conditionally
-        if (window.matchMedia('(min-width: 768px)').matches) {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.tailwindcss.com';
-            script.onload = function() {
-                tailwind.config = {
-                    theme: {
-                        extend: {
-                            colors: {
-                                primary: '#8F87F1',
-                                secondary: '#C68EFD',
-                                accent: '#E9A5F1',
-                                light: '#FED2E2',
-                                dark: '#2E2D4D',
-                                approved: '#D1F7E6',
-                                approvedText: '#0E6245',
-                                rejected: '#FFE8E8',
-                                rejectedText: '#D12953',
-                            },
-                            fontFamily: {
-                                sans: ['Inter', 'sans-serif'],
-                            }
-                        }
-                    }
-                };
-            };
-            document.head.appendChild(script);
+        
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            .result-card {
+                padding: 1.5rem !important;
+            }
+            .result-heading {
+                font-size: 1.8rem !important;
+            }
+            .factors-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .emi-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .action-buttons a {
+                width: 100%;
+            }
         }
-    </script>
+        
+        /* Ensure tap targets are large enough */
+        .tap-target {
+            min-width: 44px;
+            min-height: 44px;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Simplified background elements -->
+<body class="bg-gray-50">
+    <!-- Background elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div class="blob" style="top:20%;left:10%;background:#8F87F1"></div>
         <div class="blob" style="bottom:20%;right:10%;background:#E9A5F1;animation-delay:2s"></div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 py-12 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 py-12 relative z-10 w-full">
         <!-- Result Card -->
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-in">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-in result-card">
             <!-- Header -->
             <div class="result-gradient text-white px-8 py-6">
-                <h1 class="text-3xl font-bold">Loan Prediction Result</h1>
+                <h1 class="text-3xl font-bold result-heading">Loan Prediction Result</h1>
                 <p class="text-light"> financial assessment</p>
             </div>
 
@@ -109,8 +115,6 @@
                     </div>
                 </div>
 
-                 
-
                 <!-- Key Factors -->
                 <div class="mb-10 animate-in" style="animation-delay:0.1s">
                     <h3 class="text-2xl font-bold text-dark mb-6 flex items-center">
@@ -120,7 +124,7 @@
                         Key Decision Factors
                     </h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 factors-grid">
                         <!-- CIBIL Score Card -->
                         <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 animate-in">
                             <div class="flex items-center mb-4">
@@ -184,7 +188,7 @@
                         {% set N = result.input_data[' loan_term'] * 12 %}
                         {% set emi = (P * R * (1 + R)**N) / ((1 + R)**N - 1) %}
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 emi-grid">
                             <div>
                                 <div class="flex justify-between items-center mb-4">
                                     <span class="text-gray-600">Loan Amount:</span>
@@ -254,7 +258,7 @@
                         Application Summary
                     </h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 summary-grid">
                         <!-- Personal Card -->
                         <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-1 animate-in">
                             <div class="flex items-center mb-4">
@@ -337,8 +341,8 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-in" style="animation-delay:0.4s">
-                    <a href="/" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white font-bold rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl text-center">
+                <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-in action-buttons" style="animation-delay:0.4s">
+                    <a href="/" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white font-bold rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl text-center tap-target">
                         New Prediction
                     </a>
                 </div>
@@ -346,13 +350,29 @@
         </div>
     </div>
 
+    <!-- Load Tailwind unconditionally -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Load Tailwind if not already loaded
-        if (typeof tailwind === 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.tailwindcss.com';
-            document.head.appendChild(script);
-        }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8F87F1',
+                        secondary: '#C68EFD',
+                        accent: '#E9A5F1',
+                        light: '#FED2E2',
+                        dark: '#2E2D4D',
+                        approved: '#D1F7E6',
+                        approvedText: '#0E6245',
+                        rejected: '#FFE8E8',
+                        rejectedText: '#D12953',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        };
     </script>
 </body>
 </html>
