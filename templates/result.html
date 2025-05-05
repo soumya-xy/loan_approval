@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Loan Prediction Result | AI Financial Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Optimized animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .result-gradient {
+            background: linear-gradient(135deg, #8F87F1 0%, #C68EFD 50%, #E9A5F1 100%);
+        }
+        .blob {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+        .animate-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            will-change: transform;
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        // Load Tailwind conditionally
+        if (window.matchMedia('(min-width: 768px)').matches) {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.tailwindcss.com';
+            script.onload = function() {
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                primary: '#8F87F1',
+                                secondary: '#C68EFD',
+                                accent: '#E9A5F1',
+                                light: '#FED2E2',
+                                dark: '#2E2D4D',
+                                approved: '#D1F7E6',
+                                approvedText: '#0E6245',
+                                rejected: '#FFE8E8',
+                                rejectedText: '#D12953',
+                            },
+                            fontFamily: {
+                                sans: ['Inter', 'sans-serif'],
+                            }
+                        }
+                    }
+                };
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Simplified background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob" style="top:20%;left:10%;background:#8F87F1"></div>
+        <div class="blob" style="bottom:20%;right:10%;background:#E9A5F1;animation-delay:2s"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 py-12 relative z-10">
+        <!-- Result Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-in">
+            <!-- Header -->
+            <div class="result-gradient text-white px-8 py-6">
+                <h1 class="text-3xl font-bold">Loan Prediction Result</h1>
+                <p class="text-light"> financial assessment</p>
+            </div>
+
+            <!-- Main Result -->
+            <div class="p-8">
+                <div class="{% if result.prediction == 'Approved' %}bg-approved text-approvedText{% else %}bg-rejected text-rejectedText{% endif %} rounded-xl p-8 mb-8 animate-in">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="mb-6 md:mb-0 text-left">
+                            <h2 class="text-3xl font-bold mb-2">Loan Status: {{ result.prediction }}</h2>
+                        </div>
+                        <div class="text-6xl {% if result.prediction == 'Approved' %}text-green-500{% else %}text-red-500{% endif %}">
+                            {% if result.prediction == 'Approved' %}
+                            🎉
+                            {% else %}
+                            ❗
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                 
+
+                <!-- Key Factors -->
+                <div class="mb-10 animate-in" style="animation-delay:0.1s">
+                    <h3 class="text-2xl font-bold text-dark mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                        Key Decision Factors
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- CIBIL Score Card -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 animate-in">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold">CIBIL Score Impact</h4>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-4 mb-2">
+                                <div class="bg-primary h-4 rounded-full" 
+                                     style="width: {% if result.input_data[' cibil_score'] > 750 %}90%{% elif result.input_data[' cibil_score'] > 650 %}70%{% else %}40%{% endif %}"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">
+                                {% if result.input_data[' cibil_score'] > 750 %}
+                                Excellent ({{ result.input_data[' cibil_score'] }} is in top 20%)
+                                {% elif result.input_data[' cibil_score'] > 650 %}
+                                Good ({{ result.input_data[' cibil_score'] }} is average risk)
+                                {% else %}
+                                Needs improvement ({{ result.input_data[' cibil_score'] }} is below average)
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <!-- Debt-to-Income Card -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 animate-in" style="animation-delay:0.1s">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold">Debt-to-Income Ratio</h4>
+                            </div>
+                            {% set ratio = (result.input_data[' loan_amount'] / result.input_data[' income_annum']) * 100 %}
+                            <div class="w-full bg-gray-100 rounded-full h-4 mb-2">
+                                <div class="bg-secondary h-4 rounded-full" 
+                                     style="width: {{ ratio }}%; max-width: 100%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600">
+                                {{ "%.1f"|format(ratio) }}% ({% if ratio < 30 %}healthy{% elif ratio < 50 %}moderate{% else %}high risk{% endif %})
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if result.prediction == 'Approved' %}
+                <div class="mb-10 animate-in" style="animation-delay:0.2s">
+                    <h3 class="text-2xl font-bold text-dark mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Monthly Payment (EMI) Calculation
+                    </h3>
+                    
+                    <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                        {% set annual_interest_rate = 10.5 %}
+                        {% set P = result.input_data[' loan_amount'] %}
+                        {% set R = annual_interest_rate / 12 / 100 %}
+                        {% set N = result.input_data[' loan_term'] * 12 %}
+                        {% set emi = (P * R * (1 + R)**N) / ((1 + R)**N - 1) %}
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-gray-600">Loan Amount:</span>
+                                    <span class="font-semibold">₹{{ "{:,.0f}".format(P) }}</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-gray-600">Interest Rate (p.a.):</span>
+                                    <span class="font-semibold">{{ annual_interest_rate }}%</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-gray-600">Loan Tenure:</span>
+                                    <span class="font-semibold">{{ result.input_data[' loan_term'] }} years ({{ N }} months)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-primary to-secondary rounded-xl p-6 text-white">
+                                <div class="text-center mb-4">
+                                    <p class="text-sm opacity-90">Your Estimated Monthly Payment</p>
+                                    <p class="text-3xl font-bold">₹{{ "{:,.0f}".format(emi) }}</p>
+                                </div>
+                                
+                                <div class="text-xs opacity-80 mt-4">
+                                    <p class="flex justify-between mb-1">
+                                        <span>Total Interest Payable:</span>
+                                        <span>₹{{ "{:,.0f}".format(emi * N - P) }}</span>
+                                    </p>
+                                    <p class="flex justify-between">
+                                        <span>Total Payment:</span>
+                                        <span>₹{{ "{:,.0f}".format(emi * N) }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="text-lg font-medium mb-3 text-dark">Payment Breakdown</h4>
+                            <div class="flex items-center h-8 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary flex items-center justify-center text-xs text-white" 
+                                     style="width: {{ (P / (emi * N)) * 100 }}%">
+                                    Principal
+                                </div>
+                                <div class="h-full bg-secondary flex items-center justify-center text-xs text-white" 
+                                     style="width: {{ ((emi * N - P) / (emi * N)) * 100 }}%">
+                                    Interest
+                                </div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                <span>Principal: {{ "{:,.0f}".format(P) }}</span>
+                                <span>Interest: {{ "{:,.0f}".format(emi * N - P) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 mt-4">
+                        Note: EMI calculation assumes a fixed interest rate of {{ annual_interest_rate }}% p.a. for illustration purposes. 
+                        Actual terms may vary based on lender policies and credit assessment.
+                    </p>
+                </div>
+                {% endif %}
+
+                <!-- Input Summary -->
+                <div class="animate-in" style="animation-delay:0.3s">
+                    <h3 class="text-2xl font-bold text-dark mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        Application Summary
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Personal Card -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-1 animate-in">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-accent bg-opacity-20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold">Personal</h4>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Dependents</p>
+                                    <p class="font-medium">{{ result.input_data[' no_of_dependents'] }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Education</p>
+                                    <p class="font-medium">{{ 'Graduate' if result.input_data[' education'] == 1 else 'Not Graduate' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Employment</p>
+                                    <p class="font-medium">{{ 'Self-Employed' if result.input_data[' self_employed'] == 1 else 'Salaried' }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Financial Card -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-1 animate-in" style="animation-delay:0.1s">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold">Financial</h4>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Annual Income</p>
+                                    <p class="font-medium">₹{{ "{:,.0f}".format(result.input_data[' income_annum']) }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Loan Amount</p>
+                                    <p class="font-medium">₹{{ "{:,.0f}".format(result.input_data[' loan_amount']) }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">CIBIL Score</p>
+                                    <p class="font-medium">{{ result.input_data[' cibil_score'] }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Assets Card -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-1 animate-in" style="animation-delay:0.2s">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold">Assets</h4>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Residential</p>
+                                    <p class="font-medium">₹{{ "{:,.0f}".format(result.input_data[' residential_assets_value']) }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Commercial</p>
+                                    <p class="font-medium">₹{{ "{:,.0f}".format(result.input_data[' commercial_assets_value']) }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 uppercase tracking-wider">Bank Assets</p>
+                                    <p class="font-medium">₹{{ "{:,.0f}".format(result.input_data[' bank_asset_value']) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-in" style="animation-delay:0.4s">
+                    <a href="/" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white font-bold rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl text-center">
+                        New Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load Tailwind if not already loaded
+        if (typeof tailwind === 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.tailwindcss.com';
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>
