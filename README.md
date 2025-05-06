@@ -3,22 +3,22 @@
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on user financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-🌐 [Live →](https://loan-approval-prediction-huo2.onrender.com)
+🌐 [Visit site](https://loan-approval-prediction-huo2.onrender.com)
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🔍 **Instant predictions** using a trained ML model  
-- 💡 **User-friendly interface** with responsive design  
-- 📊 **Key decision factors** visualization  
-- 🧮 **EMI calculator** for approved loans  
-- 🎯 **85% prediction accuracy** on test data  
-- 💻 **Google Colab Notebook** for model training and exploration  
+-  **Instant predictions** using a trained ML model  
+-  **User-friendly interface** with responsive design  
+-  **Key decision factors** visualization  
+-  **EMI calculator** for approved loans  
+-  **85% prediction accuracy** on test data  
+-  **Google Colab Notebook** for model training and exploration  
 
 ---
 
-## 🧠 Colab Notebook
+##  Colab Notebook
 
 The training and evaluation of the machine learning model was done in a **Google Colab notebook** for easy experimentation, reproducibility, and sharing.
 
@@ -31,7 +31,7 @@ The training and evaluation of the machine learning model was done in a **Google
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Component        | Technology               |
 |------------------|---------------------------|
@@ -44,7 +44,7 @@ The training and evaluation of the machine learning model was done in a **Google
 
 ---
 
-## ⚙️ How It Works
+##  How It Works
 
 1. User submits financial details via a web form  
 2. Flask backend processes the input and passes it to the trained ML model  
@@ -53,13 +53,13 @@ The training and evaluation of the machine learning model was done in a **Google
 
 ---
 
-## 🚀 Deployment on Render
+##  Deployment on Render
 
-### 🔒 Prerequisites
+###  Prerequisites
 - GitHub account with this repository
 - Render account (free tier works)
 
-### ⚙️ Steps
+###  Steps
 
 ```bash
 # Clone this repo
@@ -72,13 +72,13 @@ git clone https://github.com/yourusername/loan-approval-predictor.git
 * Set start command: `gunicorn app:app`
 * Deploy!
 
-### 🔁 Auto-Deploy
+###  Auto-Deploy
 
 Enabled by default in Render. Any push to the `main` branch triggers auto redeploy.
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 ```
 loan-approval-predictor/
@@ -97,7 +97,7 @@ loan-approval-predictor/
 
 ---
 
-## 🧪 Running Locally
+##  Running Locally
 
 ```bash
 # 1. Create a virtual environment (optional but recommended)
@@ -116,7 +116,7 @@ Visit `http://localhost:5000` in your browser.
 
 ---
 
-## 👥 Contributors
+##  Contributors
 
 * [Soumya Jain](https://github.com/soumya-xy)
 * [Mehul Shah](https://github.com/shahmehul2005)
