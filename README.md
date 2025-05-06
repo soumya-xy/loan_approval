@@ -5,7 +5,7 @@
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-[![Render Deployment] (https://loan-approval-prediction-huo2.onrender.com)
+![Render Deployment] (https://loan-approval-prediction-huo2.onrender.com)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/loan-approval-predictor)
 
 ![App Screenshot](https://i.imgur.com/your-screenshot-url.png) *(Replace with actual screenshot)*
