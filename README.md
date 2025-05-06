@@ -1,13 +1,9 @@
  
-
----
-
-````markdown
-# 🏦 Loan Approval Predictor
+#  Loan Approval Predictor
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on user financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-🌐 [Live Demo →](https://loan-approval-prediction-huo2.onrender.com)
+🌐 [Live →](https://loan-approval-prediction-huo2.onrender.com)
 
 ---
 
@@ -32,9 +28,6 @@ The training and evaluation of the machine learning model was done in a **Google
 - Model training (Logistic Regression)  
 - Accuracy evaluation  
 - Model export to `model.pkl`
-
-📎 You can view or run the notebook here:  
-[🔗 Loan Approval Model Training (Colab)](https://colab.research.google.com/drive/your_colab_link_here)
 
 ---
 
@@ -131,18 +124,4 @@ Visit `http://localhost:5000` in your browser.
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-
----
-
-### ✅ What to Do Next:
-- Replace `"yourusername"` and `"your_colab_link_here"` with your actual GitHub username and Colab link.
-- Add this as `README.md` to your project root folder.
-- Git add, commit, and push it.
-
-Would you like me to generate a `requirements.txt` or `LICENSE` file too?
-```
+ 
