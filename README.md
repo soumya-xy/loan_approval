@@ -77,5 +77,5 @@ loan-approval-predictor/
 ## Contributors 
 - [Soumya jain](https://github.com/soumya-xy)
 - [Mehul shah](https://github.com/shahmehul2005)
-- [Bhavishya jain](https://github.com/Bhvishya011)
+- [Bhavishya jain](https://github.com/Bhavishya011)
 
