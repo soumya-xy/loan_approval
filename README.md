@@ -1,23 +1,20 @@
  
 
  
-# Loan Approval Predictor 🏦🤖
+# Loan Approval Predictor 
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-![Render Deployment] (https://loan-approval-prediction-huo2.onrender.com)
-![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/loan-approval-predictor)
+[Render Deployment] (https://loan-approval-prediction-huo2.onrender.com)
 
-![App Screenshot](https://i.imgur.com/your-screenshot-url.png) *(Replace with actual screenshot)*
-
-## Features ✨
+## Features 
 - **Instant predictions** using a trained ML model
 - **User-friendly interface** with responsive design
 - **Key decision factors** visualization
 - **EMI calculator** for approved loans
 - **85% prediction accuracy** on test data
 
-## Tech Stack 🛠️
+## Tech Stack 
 | Component       | Technology |
 |-----------------|------------|
 | Frontend        | HTML5, CSS3, Tailwind CSS |
@@ -26,13 +23,13 @@ A machine learning-powered web application that predicts loan approval likelihoo
 | Deployment      | Render |
 | Version Control | GitHub |
 
-## How It Works 🔍
+## How It Works 
 1. User submits financial details via web form
 2. Flask backend processes data with ML model
 3. Prediction result displayed with explanations
 4. EMI breakdown shown for approved loans
 
-## Deployment on Render 🚀
+## Deployment on Render 
 1. **Prerequisites**:
    - GitHub account with this repository
    - Render account (free tier works)
@@ -52,7 +49,7 @@ A machine learning-powered web application that predicts loan approval likelihoo
    - Enabled by default in Render
    - Pushes to `main` branch trigger automatic redeploys
 
-## File Structure 📂
+## File Structure 
 ```
 loan-approval-predictor/
 ├── app.py                # Flask application
@@ -66,7 +63,7 @@ loan-approval-predictor/
 ├── requirements.txt      # Python dependencies
 ```
 
-## Running Locally 💻
+## Running Locally 
 1. Install dependencies:
    ```bash
    pip install -r requirements.txt
@@ -77,8 +74,8 @@ loan-approval-predictor/
    ```
 3. Visit `http://localhost:5000`
 
-## Contributors 👥
+## Contributors 
 - [Soumya jain](https://github.com/soumya-xy)
 - [Mehul shah](https://github.com/shahmehul2005)
-- [Bhavishya jain](https://github.com/bhvishya011)
+- [Bhavishya jain](https://github.com/Bhvishya011)
 
