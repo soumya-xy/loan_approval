@@ -5,7 +5,7 @@
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-[![Render Deployment](https://img.shields.io/badge/Render-Deployed-%2300CCCC?style=flat&logo=render)](https://loan-approval-predictor.onrender.com)
+[![Render Deployment] (https://loan-approval-prediction-huo2.onrender.com)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/loan-approval-predictor)
 
 ![App Screenshot](https://i.imgur.com/your-screenshot-url.png) *(Replace with actual screenshot)*
@@ -61,9 +61,9 @@ loan-approval-predictor/
 ├── templates/            # Frontend templates
 │   ├── index.html        # Main form
 │   └── result.html       # Results page
-├── static/               # CSS/JS assets
+├── static/
+    |__style.css              # CSS/JS assets
 ├── requirements.txt      # Python dependencies
-└── Procfile              # Render configuration
 ```
 
 ## Running Locally 💻
@@ -78,27 +78,7 @@ loan-approval-predictor/
 3. Visit `http://localhost:5000`
 
 ## Contributors 👥
-- [Your Name](https://github.com/yourusername)
-- [Team Member 2](https://github.com/username2)
-- [Team Member 3](https://github.com/username3)
+- [Soumya jain](https://github.com/soumya-xy)
+- [Mehul shah](https://github.com/shahmehul2005)
+- [Bhavishya jain](https://github.com/bhvishya011)
 
-## License 📄
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-
-### Key Features of This README:
-1. **Badges** - Shows deployment status and last update
-2. **Visual Hierarchy** - Clear sections with emoji headers
-3. **Deployment Guide** - Specific Render instructions
-4. **Tech Stack Table** - Quick overview of technologies
-5. **Local Setup** - Easy reproduction instructions
-
-**To add a screenshot**:
-1. Upload your screenshot to [Imgur](https://imgur.com/)
-2. Replace the placeholder URL in the markdown
-
-Would you like me to add any specific details about:
-- The ML model training process?
-- Data privacy considerations?
-- API documentation (if applicable)?
