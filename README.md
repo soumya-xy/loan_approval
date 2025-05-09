@@ -3,7 +3,9 @@
 
 A machine learning-powered web application that predicts loan approval likelihood with **85% accuracy** based on user financial profiles. Built with Python (Flask), HTML/CSS, and deployed on Render.
 
-🌐 [Visit site](https://loan-approval-prediction-huo2.onrender.com)
+ [Visit site](https://loan-approval-prediction-huo2.onrender.com)
+ [visit Blog](https://medium.com/@23ucs555/predicting-loan-approval-using-data-science-a-complete-guide-4f78b5541f52)
+ [project explaination](https://youtu.be/nvRgMMUO6nc)
 
 ---
 
